@@ -13,7 +13,7 @@ public class Mercancia {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "codigo_IUP")
+    @Column(name = "codigo_iup")
     private String codigoIUP;
     @Column(name = "nombre")
     private String nombre;
