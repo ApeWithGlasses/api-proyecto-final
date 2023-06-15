@@ -38,12 +38,12 @@ public class Mercancia {
     private Zona zona;
 
     @OneToMany(mappedBy = "mercancias")
-    private List<Movimientos> movimientos;
+    private List<Movimiento> movimientos;
 
     public Mercancia() {
     }
 
-    public Mercancia(Integer id, String codigoIUP, String nombre, String descripcion, LocalDate fechaEntrada, String motivoDevolucion, Integer volumen, Boolean enBodega, Zona zona, List<Movimientos> movimientos) {
+    public Mercancia(Integer id, String codigoIUP, String nombre, String descripcion, LocalDate fechaEntrada, String motivoDevolucion, Integer volumen, Boolean enBodega, Zona zona, List<Movimiento> movimientos) {
         this.id = id;
         this.codigoIUP = codigoIUP;
         this.nombre = nombre;
@@ -128,11 +128,11 @@ public class Mercancia {
         this.zona = zona;
     }
 
-    public List<Movimientos> getMovimientos() {
+    public List<Movimiento> getMovimientos() {
         return movimientos;
     }
 
-    public void setMovimientos(List<Movimientos> movimientos) {
+    public void setMovimientos(List<Movimiento> movimientos) {
         this.movimientos = movimientos;
     }
 }

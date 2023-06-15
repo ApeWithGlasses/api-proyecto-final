@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 @Entity
 @Table(name = "movimientos")
-public class Movimientos {
+public class Movimiento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,10 +22,10 @@ public class Movimientos {
     @JoinColumn(name = "id_mercancia")
     private Mercancia mercancias;
 
-    public Movimientos() {
+    public Movimiento() {
     }
 
-    public Movimientos(Integer id, String tipoMovimineto, LocalDate fecha, Mercancia mercancias) {
+    public Movimiento(Integer id, String tipoMovimineto, LocalDate fecha, Mercancia mercancias) {
         this.id = id;
         this.tipoMovimineto = tipoMovimineto;
         this.fecha = fecha;
