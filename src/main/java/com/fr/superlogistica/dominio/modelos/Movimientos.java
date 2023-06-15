@@ -12,14 +12,14 @@ public class Movimientos {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "tipoMovimiento")
+    @Column(name = "tipo_movimiento")
     private String tipoMovimineto;
 
     @Column(name = "fecha")
     private LocalDate fecha;
 
     @ManyToOne
-    @JoinColumn(name = "idMercancia")
+    @JoinColumn(name = "id_mercancia")
     private Mercancia mercancias;
 
     public Movimientos() {

@@ -15,7 +15,7 @@ public class Zona {
     @Column(name = "nombre")
     private String nombre;
 
-    @Column(name = "volumenMaximo")
+    @Column(name = "volumen_maximo")
     private Integer volumenMaximo;
 
     @OneToMany(mappedBy = "zona")

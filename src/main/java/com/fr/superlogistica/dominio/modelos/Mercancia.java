@@ -13,7 +13,7 @@ public class Mercancia {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "codigoIUP")
+    @Column(name = "codigo_IUP")
     private String codigoIUP;
     @Column(name = "nombre")
     private String nombre;
@@ -21,16 +21,16 @@ public class Mercancia {
     @Column(name = "descripcion")
     private String descripcion;
 
-    @Column(name = "fechaEntrada")
+    @Column(name = "fecha_entrada")
     private LocalDate fechaEntrada;
 
-    @Column(name = "motivoDevolucion")
+    @Column(name = "motivo_devolucion")
     private String motivoDevolucion;
 
     @Column(name = "volumen")
     private Integer volumen;
 
-    @Column(name = "enBodega")
+    @Column(name = "en_bodega")
     private Boolean enBodega;
 
     @ManyToOne
