@@ -11,10 +11,10 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface MercanciaResponseMapper {
     @Mappings({
-        @Mapping(source = "codigoIup", target = "codigoIup"),
+        @Mapping(source = "codigoIUP", target = "codigoIup"),
             @Mapping(source = "fechaEntrada", target = "fechaEntrada"),
-            @Mapping(source = "zona", target = "idZona")
+            @Mapping(source = "zona.id", target = "idZona")
     })
-    MercanciaResponseDTO mapMercanciaToMercanciaResponseDTO(Mercancia mercancia);
-    List<MercanciaResponseDTO> mapMercanciasToMercanciaResponseDTO(List<Mercancia> mercancias);
+    MercanciaResponseDTO mapMercanciaToMercanciaResponse(Mercancia mercancia);
+    List<MercanciaResponseDTO> mapMercanciasToMercanciaResponse(List<Mercancia> mercancias);
 }

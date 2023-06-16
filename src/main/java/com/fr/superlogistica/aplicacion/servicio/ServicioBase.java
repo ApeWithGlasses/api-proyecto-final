@@ -1,4 +1,4 @@
-package com.fr.superlogistica.aplicacion.service;
+package com.fr.superlogistica.aplicacion.servicio;
 
 import java.util.List;
 
