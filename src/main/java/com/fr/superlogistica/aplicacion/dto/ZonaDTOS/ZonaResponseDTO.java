@@ -1,6 +1,6 @@
 package com.fr.superlogistica.aplicacion.dto.ZonaDTOS;
 
-public class ZonaResponseDTO extends ZonaDTO{
+public class ZonaResponseDTO extends ZonaDTO {
     private Integer id;
     private String nombre;
     private Integer volumenMaximo;

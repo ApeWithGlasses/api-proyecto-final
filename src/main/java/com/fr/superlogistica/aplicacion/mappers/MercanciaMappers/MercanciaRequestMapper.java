@@ -9,7 +9,7 @@ import org.mapstruct.Mappings;
 @Mapper(componentModel = "spring")
 public interface MercanciaRequestMapper {
     @Mappings({
-            @Mapping(source = "codigoIup", target = "codigoIup"),
+            @Mapping(source = "codigoIup", target = "codigoIUP"),
             @Mapping(source = "nombre", target = "nombre"),
             @Mapping(source = "descripcion", target = "descripcion"),
             @Mapping(source = "fechaEntrada", target = "fechaEntrada"),
@@ -19,5 +19,5 @@ public interface MercanciaRequestMapper {
             @Mapping(source = "idZona", target = "zona.id")
     })
 
-    Mercancia mapMercanciaRequestDTOToMercancia(MercanciaRequestDTO mercanciaRequestDTO);
+    Mercancia mapMercanciaRequestToMercancia(MercanciaRequestDTO mercanciaRequestDTO);
 }
