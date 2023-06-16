@@ -14,7 +14,7 @@ public class Mercancia {
     private Integer id;
 
     @Column(name = "codigo_iup")
-    private String codigoIUP;
+    private String codigoIup;
     @Column(name = "nombre")
     private String nombre;
 
@@ -43,9 +43,9 @@ public class Mercancia {
     public Mercancia() {
     }
 
-    public Mercancia(Integer id, String codigoIUP, String nombre, String descripcion, LocalDate fechaEntrada, String motivoDevolucion, Integer volumen, Boolean enBodega, Zona zona, List<Movimiento> movimientos) {
+    public Mercancia(Integer id, String codigoIup, String nombre, String descripcion, LocalDate fechaEntrada, String motivoDevolucion, Integer volumen, Boolean enBodega, Zona zona, List<Movimiento> movimientos) {
         this.id = id;
-        this.codigoIUP = codigoIUP;
+        this.codigoIup = codigoIup;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechaEntrada = fechaEntrada;
@@ -65,11 +65,11 @@ public class Mercancia {
     }
 
     public String getCodigoIUP() {
-        return codigoIUP;
+        return codigoIup;
     }
 
     public void setCodigoIUP(String codigoIUP) {
-        this.codigoIUP = codigoIUP;
+        this.codigoIup = codigoIUP;
     }
 
     public String getNombre() {
