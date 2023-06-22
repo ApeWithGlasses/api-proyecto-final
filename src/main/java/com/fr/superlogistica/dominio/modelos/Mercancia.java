@@ -33,8 +33,11 @@ public class Mercancia {
     @Column(name = "en_bodega")
     private Boolean enBodega;
 
+    @Column(name = "id_zona")
+    private Integer idZona;
+
     @ManyToOne
-    @JoinColumn(name = "id_zona")
+    @JoinColumn(name = "id_zona", insertable = false, updatable = false)
     private Zona zona;
 
     @OneToMany(mappedBy = "mercancias")
@@ -134,5 +137,13 @@ public class Mercancia {
 
     public void setMovimientos(List<Movimiento> movimientos) {
         this.movimientos = movimientos;
+    }
+
+    public Integer getIdZona() {
+        return idZona;
+    }
+
+    public void setIdZona(Integer idZona) {
+        this.idZona = idZona;
     }
 }

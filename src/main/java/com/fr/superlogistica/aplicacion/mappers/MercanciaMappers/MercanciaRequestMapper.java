@@ -12,11 +12,14 @@ public interface MercanciaRequestMapper {
             @Mapping(source = "codigoIup", target = "codigoIUP"),
             @Mapping(source = "nombre", target = "nombre"),
             @Mapping(source = "descripcion", target = "descripcion"),
-            @Mapping(source = "fechaEntrada", target = "fechaEntrada"),
             @Mapping(source = "motivoDevolucion", target = "motivoDevolucion"),
             @Mapping(source = "volumen", target = "volumen"),
             @Mapping(source = "enBodega", target = "enBodega"),
-            @Mapping(source = "idZona", target = "zona.id")
+            @Mapping(source = "idZona", target = "idZona"),
+            @Mapping(target = "fechaEntrada", ignore = true),
+            @Mapping(target = "movimientos", ignore = true),
+            @Mapping(target = "id", ignore = true),
+            @Mapping(target = "zona", ignore = true)
     })
 
     Mercancia mapMercanciaRequestToMercancia(MercanciaRequestDTO mercanciaRequestDTO);

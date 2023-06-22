@@ -13,7 +13,7 @@ public interface MercanciaResponseMapper {
     @Mappings({
         @Mapping(source = "codigoIUP", target = "codigoIup"),
             @Mapping(source = "fechaEntrada", target = "fechaEntrada"),
-            @Mapping(source = "zona.id", target = "idZona")
+            @Mapping(source = "idZona", target = "idZona")
     })
     MercanciaResponseDTO mapMercanciaToMercanciaResponse(Mercancia mercancia);
     List<MercanciaResponseDTO> mapMercanciasToMercanciaResponse(List<Mercancia> mercancias);

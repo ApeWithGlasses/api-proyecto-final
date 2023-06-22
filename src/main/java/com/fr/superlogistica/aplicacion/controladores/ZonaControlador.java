@@ -39,7 +39,7 @@ public class ZonaControlador {
                     .body(zonaServicio.obtenerPorId(id));
         } catch (Exception e) {
             ZonaErrorDTO error = new ZonaErrorDTO();
-            error.setError("Zona no encontrada.");
+            error.setError(e.getMessage());
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
                     .body(error);
@@ -54,7 +54,7 @@ public class ZonaControlador {
                     .body(zonaServicio.registrar(zonaRequestDTO));
         } catch (Exception e) {
             ZonaErrorDTO error = new ZonaErrorDTO();
-            error.setError("Por favor verifica los campos.");
+            error.setError(e.getMessage());
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
                     .body(error);

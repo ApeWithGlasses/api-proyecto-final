@@ -6,7 +6,6 @@ public class MercanciaRequestDTO extends MercanciaDTO {
     private String codigoIup;
     private String nombre;
     private String descripcion;
-    private LocalDate fechaEntrada;
     private String motivoDevolucion;
     private Integer volumen;
     private Boolean enBodega;
@@ -34,14 +33,6 @@ public class MercanciaRequestDTO extends MercanciaDTO {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public LocalDate getFechaEntrada() {
-        return fechaEntrada;
-    }
-
-    public void setFechaEntrada(LocalDate fechaEntrada) {
-        this.fechaEntrada = fechaEntrada;
     }
 
     public String getMotivoDevolucion() {
