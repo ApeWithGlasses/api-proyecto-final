@@ -1,6 +1,5 @@
 package com.fr.superlogistica.dominio.servicio;
 
-import com.fr.superlogistica.aplicacion.dto.ZonaDTOS.ZonaErrorDTO;
 import com.fr.superlogistica.aplicacion.dto.ZonaDTOS.ZonaRequestDTO;
 import com.fr.superlogistica.aplicacion.dto.ZonaDTOS.ZonaResponseDTO;
 import com.fr.superlogistica.aplicacion.mappers.ZonaMappers.ZonaRequestMapper;
@@ -20,15 +19,15 @@ public class ZonaServicio implements ServicioBase<ZonaRequestDTO, ZonaResponseDT
     protected ZonaRepositorio zonaRepositorio;
 
     @Autowired
-    protected ZonaRequestMapper zonaRequestMapper;
+    protected ZonaRequestMapper requestMapper;
 
     @Autowired
-    protected ZonaResponseMapper zonaResponseMapper;
+    protected ZonaResponseMapper responseMapper;
 
     @Override
     public List<ZonaResponseDTO> obtenerTodos() throws Exception {
         try {
-            return zonaResponseMapper.mapZonasToZonaResponses(zonaRepositorio.findAll());
+            return responseMapper.mapZonasToZonaResponses(zonaRepositorio.findAll());
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
@@ -37,7 +36,12 @@ public class ZonaServicio implements ServicioBase<ZonaRequestDTO, ZonaResponseDT
     @Override
     public ZonaResponseDTO obtenerPorId(Integer id) throws Exception {
         try {
-            return zonaResponseMapper.mapZonaToZonaResponse(zonaRepositorio.getById(id));
+            Optional<Zona> zonaOptional = zonaRepositorio.findById(id);
+            if (zonaOptional.isPresent()) {
+                return responseMapper.mapZonaToZonaResponse(zonaOptional.get());
+            } else {
+                throw new Exception("La zona con la id " + id + " no existe en la base de datos.");
+            }
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
@@ -46,9 +50,9 @@ public class ZonaServicio implements ServicioBase<ZonaRequestDTO, ZonaResponseDT
     @Override
     public ZonaResponseDTO registrar(ZonaRequestDTO datos) throws Exception {
         try {
-            return zonaResponseMapper.mapZonaToZonaResponse(zonaRepositorio.save(zonaRequestMapper.mapZonaRequestToZona(datos)));
+            return responseMapper.mapZonaToZonaResponse(zonaRepositorio.save(requestMapper.mapZonaRequestToZona(datos)));
         } catch (Exception e) {
-            throw new Exception(e.getMessage());
+            throw new Exception("Por favor verifica todos los campos ingresados.");
         }
     }
 
@@ -60,7 +64,7 @@ public class ZonaServicio implements ServicioBase<ZonaRequestDTO, ZonaResponseDT
                 Zona zonaExistente = zonaOptional.get();
                 zonaExistente.setNombre(nuevosDatos.getNombre());
                 zonaExistente.setVolumenMaximo(nuevosDatos.getVolumenMaximo());
-                return zonaResponseMapper.mapZonaToZonaResponse(zonaRepositorio.save(zonaExistente));
+                return responseMapper.mapZonaToZonaResponse(zonaRepositorio.save(zonaExistente));
             } else {
                 throw new Exception("No existe una zona con el id proporcionado.");
             }

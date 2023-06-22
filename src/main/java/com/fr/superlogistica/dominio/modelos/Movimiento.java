@@ -13,13 +13,16 @@ public class Movimiento {
     private Integer id;
 
     @Column(name = "tipo_movimiento")
-    private String tipoMovimineto;
+    private String tipoMovimiento;
 
     @Column(name = "fecha")
     private LocalDate fecha;
 
+    @Column(name = "id_mercancia")
+    private Integer idMercancia;
+
     @ManyToOne
-    @JoinColumn(name = "id_mercancia")
+    @JoinColumn(name = "id_mercancia", insertable = false, updatable = false)
     private Mercancia mercancias;
 
     public Movimiento() {
@@ -27,7 +30,7 @@ public class Movimiento {
 
     public Movimiento(Integer id, String tipoMovimineto, LocalDate fecha, Mercancia mercancias) {
         this.id = id;
-        this.tipoMovimineto = tipoMovimineto;
+        this.tipoMovimiento = tipoMovimineto;
         this.fecha = fecha;
         this.mercancias = mercancias;
     }
@@ -40,12 +43,12 @@ public class Movimiento {
         this.id = id;
     }
 
-    public String getTipoMovimineto() {
-        return tipoMovimineto;
+    public String getTipoMovimiento() {
+        return tipoMovimiento;
     }
 
-    public void setTipoMovimineto(String tipoMovimineto) {
-        this.tipoMovimineto = tipoMovimineto;
+    public void setTipoMovimiento(String tipoMovimiento) {
+        this.tipoMovimiento = tipoMovimiento;
     }
 
     public LocalDate getFecha() {
@@ -62,5 +65,13 @@ public class Movimiento {
 
     public void setMercancias(Mercancia mercancias) {
         this.mercancias = mercancias;
+    }
+
+    public Integer getIdMercancia() {
+        return idMercancia;
+    }
+
+    public void setIdMercancia(Integer idMercancia) {
+        this.idMercancia = idMercancia;
     }
 }

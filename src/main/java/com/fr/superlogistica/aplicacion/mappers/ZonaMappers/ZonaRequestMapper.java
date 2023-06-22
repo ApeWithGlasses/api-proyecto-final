@@ -10,7 +10,11 @@ import org.mapstruct.Mappings;
 public interface ZonaRequestMapper {
     @Mappings({
             @Mapping(source = "nombre", target = "nombre"),
-            @Mapping(source = "volumenMaximo", target = "volumenMaximo")
+            @Mapping(source = "volumenMaximo", target = "volumenMaximo"),
+            @Mapping(target = "id", ignore = true),
+            @Mapping(target = "mercancias", ignore = true)
     })
+
+
     Zona mapZonaRequestToZona(ZonaRequestDTO zonaRequestDTO);
 }
