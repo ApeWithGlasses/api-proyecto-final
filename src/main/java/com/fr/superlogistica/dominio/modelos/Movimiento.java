@@ -1,6 +1,6 @@
 package com.fr.superlogistica.dominio.modelos;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.time.LocalDate;
 @Entity
