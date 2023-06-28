@@ -5,6 +5,7 @@ import com.fr.superlogistica.aplicacion.dto.MovimientoDTOS.MovimientoErrorDTO;
 import com.fr.superlogistica.aplicacion.dto.MovimientoDTOS.MovimientoRequestDTO;
 import com.fr.superlogistica.aplicacion.dto.MovimientoDTOS.MovimientoResponseDTO;
 import com.fr.superlogistica.dominio.servicio.MovimientoServicio;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,12 +14,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("movimientos")
+@RequestMapping("/movimientos")
 public class MovimientoControlador {
     @Autowired
     protected MovimientoServicio movimientoServicio;
 
     @GetMapping
+    @ApiOperation("Obtener todos los movimientos existentes")
     public ResponseEntity<List<MovimientoResponseDTO>> obtenerTodos() {
         try {
             return ResponseEntity
@@ -32,6 +34,7 @@ public class MovimientoControlador {
     }
 
     @GetMapping("/{id}")
+    @ApiOperation("Obtener un movimiento por su id")
     public ResponseEntity<MovimientoDTO> obtenerPorId(@PathVariable(name = "id") Integer id) {
         try {
             return ResponseEntity
@@ -47,6 +50,7 @@ public class MovimientoControlador {
     }
 
     @GetMapping("/mercancia/{idMercancia}")
+    @ApiOperation("Obtener todos los movimientos relacionados a una mercancia por su id")
     public ResponseEntity<List<MovimientoResponseDTO>> obtenerPorIdMercancia(@PathVariable(name = "idMercancia") Integer idMercancia) {
         try {
             return ResponseEntity
@@ -60,6 +64,7 @@ public class MovimientoControlador {
     }
 
     @PostMapping
+    @ApiOperation("Crear un movimiento")
     public ResponseEntity<MovimientoDTO> crearMovimiento(@RequestBody MovimientoRequestDTO movimientoRequestDTO) {
         try {
             return ResponseEntity
@@ -75,6 +80,7 @@ public class MovimientoControlador {
     }
 
     @PutMapping("/{id}")
+    @ApiOperation("Modificar un movimiento con su id")
     public ResponseEntity<MovimientoDTO> modificar(@RequestBody MovimientoRequestDTO movimientoRequestDTO, @PathVariable(name = "id") Integer id) {
         try {
             return ResponseEntity
@@ -90,6 +96,7 @@ public class MovimientoControlador {
     }
 
     @DeleteMapping("/{id}")
+    @ApiOperation("Eliminar un movimiento")
     public ResponseEntity eliminar(@PathVariable(name = "id") Integer id) {
         try {
             return ResponseEntity

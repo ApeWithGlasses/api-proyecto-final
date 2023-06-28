@@ -5,6 +5,7 @@ import com.fr.superlogistica.aplicacion.dto.ZonaDTOS.ZonaErrorDTO;
 import com.fr.superlogistica.aplicacion.dto.ZonaDTOS.ZonaRequestDTO;
 import com.fr.superlogistica.aplicacion.dto.ZonaDTOS.ZonaResponseDTO;
 import com.fr.superlogistica.dominio.servicio.ZonaServicio;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,12 +14,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("zonas")
+@RequestMapping("/zonas")
 public class ZonaControlador {
     @Autowired
     protected ZonaServicio zonaServicio;
 
     @GetMapping
+    @ApiOperation("Obtener todas las zonas existentes")
     public ResponseEntity<List<ZonaResponseDTO>> obtenerTodos() {
         try {
             return ResponseEntity
@@ -32,6 +34,7 @@ public class ZonaControlador {
     }
 
     @GetMapping("/{id}")
+    @ApiOperation("Obtener una zona por su id")
     public ResponseEntity<ZonaDTO> obtenerPorId(@PathVariable(name = "id") Integer id) {
         try {
             return ResponseEntity
@@ -47,6 +50,7 @@ public class ZonaControlador {
     }
 
     @PostMapping
+    @ApiOperation("Crear una zona")
     public ResponseEntity<ZonaDTO> crearZona(@RequestBody ZonaRequestDTO zonaRequestDTO) {
         try {
             return ResponseEntity
@@ -62,6 +66,7 @@ public class ZonaControlador {
     }
 
     @PutMapping("/{id}")
+    @ApiOperation("Modificar una zona con su id")
     public ResponseEntity<ZonaDTO> modificar(@RequestBody ZonaRequestDTO zonaRequestDTO, @PathVariable(name = "id") Integer id) {
         try {
             return ResponseEntity
@@ -77,6 +82,7 @@ public class ZonaControlador {
     }
 
     @DeleteMapping("/{id}")
+    @ApiOperation("Eliminar una zona")
     public ResponseEntity eliminar(@PathVariable(name = "id") Integer id) {
         try {
             zonaServicio.eliminar(id);
