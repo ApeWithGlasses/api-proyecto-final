@@ -6,7 +6,9 @@ import com.fr.superlogistica.aplicacion.mappers.MercanciaMappers.MercanciaReques
 import com.fr.superlogistica.aplicacion.mappers.MercanciaMappers.MercanciaResponseMapper;
 import com.fr.superlogistica.aplicacion.servicio.ServicioBase;
 import com.fr.superlogistica.dominio.modelos.Mercancia;
+import com.fr.superlogistica.dominio.modelos.Zona;
 import com.fr.superlogistica.dominio.repositorios.MercanciaRepositorio;
+import com.fr.superlogistica.dominio.repositorios.ZonaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,9 @@ import java.util.Optional;
 public class MercanciaServicio implements ServicioBase<MercanciaRequestDTO, MercanciaResponseDTO> {
     @Autowired
     protected MercanciaRepositorio mercanciaRepositorio;
+
+    @Autowired
+    protected ZonaRepositorio zonaRepositorio;
 
     @Autowired
     protected MercanciaRequestMapper requestMapper;
@@ -52,6 +57,16 @@ public class MercanciaServicio implements ServicioBase<MercanciaRequestDTO, Merc
     @Override
     public MercanciaResponseDTO registrar(MercanciaRequestDTO datos) throws Exception {
         try {
+            Optional<Zona> zonaOptional = zonaRepositorio.findById(datos.getIdZona());
+            if (zonaOptional.isPresent()) {
+                Zona zonaExistente = zonaOptional.get();
+                if (datos.getVolumen() > zonaExistente.getVolumenMaximo()) {
+                    throw new Exception("El volumen supera el volumen maximo permitido");
+                } else {
+                    zonaExistente.setVolumenMaximo(zonaExistente.getVolumenMaximo() - datos.getVolumen());
+                    zonaRepositorio.save(zonaExistente);
+                }
+            }
             Mercancia mapeoMercancia = requestMapper.mapMercanciaRequestToMercancia(datos);
             mapeoMercancia.setFechaEntrada(LocalDate.now());
             return responseMapper.mapMercanciaToMercanciaResponse(mercanciaRepositorio.save(mapeoMercancia));
